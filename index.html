@@ -1,0 +1,307 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
+  :root {
+    --navy: #001E60; --navy-dark: #001545; --purple: #2e2d70;
+    --orange: #F7951D; --orange-dark: #DF6B00;
+    --teal: #56C3C4; --teal-dark: #3DA3A8;
+    --gray-50: #f8f9fb; --gray-100: #eef0f4; --gray-200: #d8dce5;
+    --gray-400: #8e8e91; --gray-600: #495057; --gray-800: #1a1a2e;
+    --radius: 8px; --radius-lg: 12px;
+    --shadow-sm: 0 1px 3px rgba(0,30,96,0.06);
+    --shadow-md: 0 4px 12px rgba(0,30,96,0.08);
+    --transition: 0.2s ease;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .wrap { font-family: 'Roboto', sans-serif; color: var(--gray-800); background: var(--gray-50); padding: 1.5rem; max-width: 700px; margin: 0 auto; }
+  h1,h2,h3,h4,h5,h6 { font-family: 'Asap Condensed', sans-serif; line-height: 1.2; }
+
+  .report-header { background: linear-gradient(135deg, var(--navy) 0%, var(--purple) 60%, #310459 100%); border-radius: var(--radius-lg); padding: 2rem 2rem 1.5rem; margin-bottom: 1.5rem; color: #fff; position: relative; overflow: hidden; }
+  .report-header::before { content:''; position:absolute; top:-40%; right:-10%; width:400px; height:400px; background:radial-gradient(circle,rgba(86,195,196,0.18) 0%,transparent 70%); pointer-events:none; }
+  .report-header::after { content:''; position:absolute; bottom:-30%; left:-5%; width:300px; height:300px; background:radial-gradient(circle,rgba(247,149,29,0.12) 0%,transparent 70%); pointer-events:none; }
+  .report-header .eyebrow { font-family: 'Asap Condensed', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--teal); margin-bottom: 0.5rem; position: relative; z-index:1; }
+  .report-header h1 { font-size: 1.9rem; font-weight: 700; margin-bottom: 0.5rem; position:relative;z-index:1; }
+  .report-header h1 span { color: var(--teal); }
+  .report-header p { font-size: 0.95rem; opacity: 0.8; max-width: 560px; line-height: 1.55; position:relative;z-index:1; }
+  .hero-stats { display: flex; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; position:relative;z-index:1; }
+  .hero-stat .num { font-family: 'Asap Condensed', sans-serif; font-size: 1.75rem; font-weight: 700; color: var(--orange); }
+  .hero-stat .lbl { font-size: 0.75rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; }
+
+  .section { background: #fff; border-radius: var(--radius-lg); border: 1px solid var(--gray-200); padding: 1.5rem; margin-bottom: 1.25rem; box-shadow: var(--shadow-sm); }
+  .section-eyebrow { font-family: 'Asap Condensed', sans-serif; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--teal-dark); margin-bottom: 0.4rem; }
+  .section-title { font-family: 'Asap Condensed', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; }
+  .section-sub { font-size: 0.85rem; color: var(--gray-400); margin-bottom: 1.1rem; line-height: 1.5; }
+  .divider { border: none; border-top: 1px solid var(--gray-100); margin: 1.25rem 0; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; margin-bottom: 1.25rem; }
+  .kpi { background: var(--gray-50); border: 1px solid var(--gray-100); border-radius: var(--radius); padding: 0.85rem 1rem; }
+  .kpi-num { font-family: 'Asap Condensed', sans-serif; font-size: 1.75rem; font-weight: 700; color: var(--navy); }
+  .kpi-lbl { font-size: 0.75rem; color: var(--gray-400); margin-top: 2px; }
+
+  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .bar-label { font-size: 0.82rem; color: var(--gray-600); width: 240px; flex-shrink: 0; line-height: 1.35; }
+  .bar-label.sm { width: 185px; }
+  .bar-track { flex: 1; height: 7px; background: var(--gray-100); border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; }
+  .bar-val { font-size: 0.75rem; font-family: 'Asap Condensed', sans-serif; font-weight: 600; color: var(--gray-600); width: 32px; text-align: right; flex-shrink: 0; }
+
+  .tag-pill { display: inline-block; font-family: 'Asap Condensed', sans-serif; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 0.2rem 0.55rem; border-radius: 4px; margin-bottom: 6px; }
+  .tag-red { background: rgba(223,107,0,0.1); color: var(--orange-dark); }
+  .tag-blue { background: rgba(0,30,96,0.08); color: var(--navy); }
+  .tag-teal { background: rgba(86,195,196,0.15); color: var(--teal-dark); }
+  .tag-purple { background: rgba(46,45,112,0.1); color: var(--purple); }
+  .tag-orange { background: rgba(247,149,29,0.12); color: var(--orange-dark); }
+
+  .insight { border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
+  .insight h3 { font-family: 'Asap Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+  .insight p { font-size: 0.85rem; color: var(--gray-600); line-height: 1.55; }
+  .insight-quote { border-left: 3px solid var(--teal); padding: 0.4rem 0.75rem; margin-top: 8px; font-size: 0.8rem; color: var(--gray-400); font-style: italic; line-height: 1.5; }
+  .accent-left { border-left: 4px solid var(--orange); }
+
+  .concern-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 7px; }
+  .concern-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+  .concern-text { font-size: 0.82rem; color: var(--gray-600); line-height: 1.35; }
+  .concern-ct { font-size: 0.75rem; color: var(--gray-400); }
+
+  .proxy-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .proxy-box { border-radius: var(--radius); padding: 0.85rem 1rem; }
+  .proxy-box .pct { font-family: 'Asap Condensed', sans-serif; font-size: 1.5rem; font-weight: 700; }
+  .proxy-box .lbl { font-size: 0.75rem; margin-top: 2px; line-height: 1.3; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .col-head { font-family: 'Asap Condensed', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--navy); margin-bottom: 0.6rem; }
+
+  .pill-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+  .pill { font-size: 0.72rem; font-family: 'Asap Condensed', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 0.2rem 0.6rem; border-radius: 4px; background: var(--gray-100); color: var(--gray-600); }
+
+  .freq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .freq-box { background: var(--gray-50); border: 1px solid var(--gray-100); border-radius: var(--radius); padding: 0.7rem; text-align: center; }
+  .freq-box .pct { font-family: 'Asap Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy); }
+  .freq-box .lbl { font-size: 0.72rem; color: var(--gray-400); margin-top: 1px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .line { background: var(--teal); width: 40px; height: 3px; border-radius: 2px; margin: 0.5rem 0 1rem; }
+</style>
+
+<div class="wrap">
+
+  <div class="report-header">
+    <div class="eyebrow">Interim results | 61 respondents | March 2026</div>
+    <h1>Measuring global <span>GenAI usage</span></h1>
+    <p>What statistics should AI labs produce, and for whom? Insights from international organization staff advising governments on AI — World Bank, OECD, IDB, UNICEF, ADB.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">61</div><div class="lbl">Responses</div></div>
+      <div class="hero-stat"><div class="num">85%</div><div class="lbl">World Bank</div></div>
+      <div class="hero-stat"><div class="num">75%</div><div class="lbl">8+ yrs experience</div></div>
+      <div class="hero-stat"><div class="num">7</div><div class="lbl">Sectors</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">Finding 1 | Statistics priority</div>
+    <div class="section-title">What statistics do experts most need?</div>
+    <div class="line"></div>
+    <div class="section-sub">Respondents ranked 10 candidate statistics by priority. Weighted scores: position 1 = 10 pts, position 10 = 1 pt.</div>
+    <div class="bar-row"><div class="bar-label">Share of queries by specific sector</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#001E60;"></div></div><div class="bar-val">460</div></div>
+    <div class="bar-row"><div class="bar-label">Share of queries by task type</div><div class="bar-track"><div class="bar-fill" style="width:94%;background:#001E60;"></div></div><div class="bar-val">434</div></div>
+    <div class="bar-row"><div class="bar-label">Prompt complexity (proxy for user skill)</div><div class="bar-track"><div class="bar-fill" style="width:83%;background:#2e2d70;"></div></div><div class="bar-val">383</div></div>
+    <div class="bar-row"><div class="bar-label">Professional vs. personal / automation vs. augmentation</div><div class="bar-track"><div class="bar-fill" style="width:83%;background:#2e2d70;"></div></div><div class="bar-val">380</div></div>
+    <div class="bar-row"><div class="bar-label">Government service &amp; regulatory queries</div><div class="bar-track"><div class="bar-fill" style="width:78%;background:#3DA3A8;"></div></div><div class="bar-val">360</div></div>
+    <div class="bar-row"><div class="bar-label">Cross-country volume &amp; composition</div><div class="bar-track"><div class="bar-fill" style="width:73%;background:#3DA3A8;"></div></div><div class="bar-val">335</div></div>
+    <div class="bar-row"><div class="bar-label">Linguistic diversity of users</div><div class="bar-track"><div class="bar-fill" style="width:63%;background:#56C3C4;"></div></div><div class="bar-val">290</div></div>
+    <div class="bar-row"><div class="bar-label">Geographic distribution within countries</div><div class="bar-track"><div class="bar-fill" style="width:62%;background:#56C3C4;"></div></div><div class="bar-val">284</div></div>
+    <div class="bar-row"><div class="bar-label">Time-of-day / day-of-week patterns</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:#d8dce5;"></div></div><div class="bar-val">230</div></div>
+    <div class="bar-row"><div class="bar-label">Repeat usage rates</div><div class="bar-track"><div class="bar-fill" style="width:43%;background:#d8dce5;"></div></div><div class="bar-val">199</div></div>
+    <div style="margin-top:0.85rem;font-size:0.82rem;color:var(--gray-400);">Sector queries ranked <strong style="color:var(--navy);">#1 by 17 respondents</strong>; government service queries ranked #1 by 13 more.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">Finding 2 | Breakdown dimensions</div>
+    <div class="section-title">Which dimensions should disaggregate the data?</div>
+    <div class="line"></div>
+    <div class="section-sub">% rating each dimension "Essential" or "Very important"</div>
+    <div class="bar-row"><div class="bar-label sm">Country</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#001E60;"></div></div><div class="bar-val">95%</div></div>
+    <div class="bar-row"><div class="bar-label sm">Subnational region</div><div class="bar-track"><div class="bar-fill" style="width:84%;background:#001E60;"></div></div><div class="bar-val">84%</div></div>
+    <div class="bar-row"><div class="bar-label sm">Gender (proxy)</div><div class="bar-track"><div class="bar-fill" style="width:75%;background:#2e2d70;"></div></div><div class="bar-val">75%</div></div>
+    <div class="bar-row"><div class="bar-label sm">Urban vs. rural (proxy)</div><div class="bar-track"><div class="bar-fill" style="width:72%;background:#2e2d70;"></div></div><div class="bar-val">72%</div></div>
+    <div class="bar-row"><div class="bar-label sm">User sophistication</div><div class="bar-track"><div class="bar-fill" style="width:66%;background:#3DA3A8;"></div></div><div class="bar-val">66%</div></div>
+    <div class="bar-row"><div class="bar-label sm">Time period (monthly/quarterly)</div><div class="bar-track"><div class="bar-fill" style="width:67%;background:#3DA3A8;"></div></div><div class="bar-val">67%</div></div>
+    <div class="bar-row"><div class="bar-label sm">Region</div><div class="bar-track"><div class="bar-fill" style="width:66%;background:#56C3C4;"></div></div><div class="bar-val">66%</div></div>
+    <div class="bar-row"><div class="bar-label sm">Language of query</div><div class="bar-track"><div class="bar-fill" style="width:53%;background:#d8dce5;"></div></div><div class="bar-val">53%</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">Finding 3 | Use case relevance</div>
+    <div class="section-title">Which user groups are most relevant to track?</div>
+    <div class="line"></div>
+    <div class="section-sub">% rating use case "Critical" or "Very relevant"</div>
+    <div class="bar-row"><div class="bar-label sm">Citizens -- government services</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F7951D;"></div></div><div class="bar-val">59%</div></div>
+    <div class="bar-row"><div class="bar-label sm">Employees in medium/large firms</div><div class="bar-track"><div class="bar-fill" style="width:90%;background:#F7951D;"></div></div><div class="bar-val">53%</div></div>
+    <div class="bar-row"><div class="bar-label sm">Job seekers -- skills/CV</div><div class="bar-track"><div class="bar-fill" style="width:70%;background:#DF6B00;"></div></div><div class="bar-val">41%</div></div>
+    <div class="bar-row"><div class="bar-label sm">Adults -- self-directed learning</div><div class="bar-track"><div class="bar-fill" style="width:66%;background:#DF6B00;"></div></div><div class="bar-val">39%</div></div>
+    <div class="bar-row"><div class="bar-label sm">Small business owners</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:#DF6B00;"></div></div><div class="bar-val">47%</div></div>
+    <div class="bar-row"><div class="bar-label sm">Farmers</div><div class="bar-track"><div class="bar-fill" style="width:56%;background:#d8dce5;"></div></div><div class="bar-val">33%</div></div>
+    <div class="bar-row"><div class="bar-label sm">Students</div><div class="bar-track"><div class="bar-fill" style="width:39%;background:#d8dce5;"></div></div><div class="bar-val">23%</div></div>
+    <div class="bar-row"><div class="bar-label sm">Teachers</div><div class="bar-track"><div class="bar-fill" style="width:51%;background:#d8dce5;"></div></div><div class="bar-val">30%</div></div>
+    <div class="insight accent-left" style="margin-top:1rem;">
+      <span class="tag-pill tag-red">Gap identified</span>
+      <h3>Government workers are systematically missing from the list</h3>
+      <p>The most frequently volunteered "missing" category -- raised by 12+ respondents unprompted -- is civil servants using AI for drafting, policy analysis, internal workflows, and coding. One respondent flagged "vibe-coding" by non-technical civil servants as a governance blind spot with direct procurement implications.</p>
+      <div class="insight-quote">"Civil servants using AI for software development support (e.g. coding assistants, vibe-coding) -- knowing how prevalent this is in public agencies would change recommendations on digital capacity-building and procurement guardrails significantly."</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">Finding 4 | Analytical priorities</div>
+    <div class="section-title">Concrete insights for lab partnerships</div>
+    <div class="line"></div>
+    <div class="insight">
+      <span class="tag-pill tag-blue">Sector and task decomposition</span>
+      <h3>The single highest-priority ask: sector + task type breakdowns</h3>
+      <p>The top two weighted statistics both point to the same need: aggregate usage figures are not usable. Respondents need data sliced by what people are doing -- health vs. education vs. government queries -- and by task type (summarization, coding, Q&A, drafting). This is the most concrete, actionable ask for labs.</p>
+    </div>
+    <div class="insight">
+      <span class="tag-pill tag-blue">Government AI usage</span>
+      <h3>Government queries are the #1 specific use case to prioritize</h3>
+      <p>Queries related to government services, regulations, or compliance ranked #1 by 13 respondents. Combined with the "missing use case" signals, both point to the same conclusion: statistics specifically about AI interactions touching government -- citizen-facing and civil servant-facing -- are the highest single-sector priority.</p>
+    </div>
+    <div class="insight">
+      <span class="tag-pill tag-orange">Equity lens</span>
+      <h3>The inequality question is the overarching research concern</h3>
+      <p>The most important single questions cited are almost uniformly about whether AI is narrowing or widening divides -- between income levels, urban/rural users, languages, and education levels. Statistics that speak to inequality of access and quality of AI outputs across country income groups have higher policy leverage than aggregate usage counts.</p>
+      <div class="insight-quote">"Is generative AI reducing poverty at scale in developing countries, or is it widening existing inequalities?"</div>
+    </div>
+    <div class="insight">
+      <span class="tag-pill tag-teal">Professional vs. personal use</span>
+      <h3>Professional/automation signal is a decision-relevant differentiator</h3>
+      <p>The "professional vs. personal / automation vs. augmentation" statistic ranks 4th overall. Respondents designing government reform programs or labor market interventions need to know whether AI is substituting labor or complementing workers -- not just that people are using it.</p>
+    </div>
+    <div class="insight">
+      <span class="tag-pill tag-orange">Missing coverage</span>
+      <h3>Open-source and non-US models are a significant blind spot</h3>
+      <p>Multiple respondents flagged that statistics focused only on US frontier labs miss a large portion of real-world adoption -- particularly Chinese models and the global open-source ecosystem. For institutions advising on technology sovereignty and local AI capacity, this gap is structurally important.</p>
+      <div class="insight-quote">"A lot of our thinking at the World Bank depends on diffusion of open source capabilities, but this has been very challenging to measure quantitatively."</div>
+    </div>
+    <div class="insight accent-left">
+      <span class="tag-pill tag-red">Methodological red flags</span>
+      <h3>Selection bias and representativeness are the top blockers to adoption</h3>
+      <p>43 of 61 respondents cited selection bias; 41 cited representativeness. These are the primary reason respondents said they might not use the statistics in government-facing work. Without credible documentation of who is and isn't captured, the statistics will not survive peer review or policy uptake.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">Finding 5 | Trust and credibility</div>
+    <div class="section-title">What would stop experts from using these statistics?</div>
+    <div class="line"></div>
+    <div class="concern-row"><div class="concern-dot" style="background:#DF6B00;"></div><div><div class="concern-text">Selection bias: only certain populations use AI platforms</div><div class="concern-ct">43 of 61 respondents</div></div></div>
+    <div class="concern-row"><div class="concern-dot" style="background:#DF6B00;"></div><div><div class="concern-text">Representativeness: chat users are not the broader population</div><div class="concern-ct">41 of 61</div></div></div>
+    <div class="concern-row"><div class="concern-dot" style="background:#F7951D;"></div><div><div class="concern-text">Accuracy: AI outputs may mislead if treated as ground truth</div><div class="concern-ct">32 of 61</div></div></div>
+    <div class="concern-row"><div class="concern-dot" style="background:#F7951D;"></div><div><div class="concern-text">Interpretability: unclear what query patterns mean for outcomes</div><div class="concern-ct">28 of 61</div></div></div>
+    <div class="concern-row"><div class="concern-dot" style="background:#F7951D;"></div><div><div class="concern-text">Cross-platform comparability: different user bases per platform</div><div class="concern-ct">28 of 61</div></div></div>
+    <div class="concern-row"><div class="concern-dot" style="background:#56C3C4;"></div><div><div class="concern-text">Privacy: aggregated data may still raise ethical concerns</div><div class="concern-ct">25 of 61</div></div></div>
+    <div class="concern-row"><div class="concern-dot" style="background:#56C3C4;"></div><div><div class="concern-text">Comparability of weights across platforms with different volumes</div><div class="concern-ct">24 of 61</div></div></div>
+    <hr class="divider">
+    <div class="col-head" style="margin-bottom:0.6rem;">What would increase confidence?</div>
+    <div class="concern-row"><div class="concern-dot" style="background:#001E60;"></div><div><div class="concern-text">Detailed methodology documentation</div><div class="concern-ct">46 of 61</div></div></div>
+    <div class="concern-row"><div class="concern-dot" style="background:#001E60;"></div><div><div class="concern-text">Validation against external data (internet penetration, surveys)</div><div class="concern-ct">42 of 61</div></div></div>
+    <div class="concern-row"><div class="concern-dot" style="background:#2e2d70;"></div><div><div class="concern-text">Clear disclosure of which platforms are included and their market share</div><div class="concern-ct">36 of 61</div></div></div>
+    <div class="concern-row"><div class="concern-dot" style="background:#2e2d70;"></div><div><div class="concern-text">Confidence intervals on all estimates</div><div class="concern-ct">36 of 61</div></div></div>
+    <div class="concern-row"><div class="concern-dot" style="background:#3DA3A8;"></div><div><div class="concern-text">Independent peer review or technical advisory group</div><div class="concern-ct">32 of 61</div></div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">Finding 6 | Proxy methods</div>
+    <div class="section-title">Will respondents accept proxy-estimated demographics?</div>
+    <div class="line"></div>
+    <div class="section-sub">Gender and urban/rural cannot be directly observed -- they must be estimated from language patterns and other signals.</div>
+    <div class="proxy-row">
+      <div class="proxy-box" style="background:rgba(86,195,196,0.12);"><div class="pct" style="color:var(--teal-dark);">49%</div><div class="lbl" style="color:var(--teal-dark);">Yes, rough estimates are valuable</div></div>
+      <div class="proxy-box" style="background:rgba(247,149,29,0.1);"><div class="pct" style="color:var(--orange-dark);">41%</div><div class="lbl" style="color:var(--orange-dark);">Only if confidence intervals provided</div></div>
+      <div class="proxy-box" style="background:rgba(223,107,0,0.1);"><div class="pct" style="color:#a33b00;">10%</div><div class="lbl" style="color:#a33b00;">No -- too unreliable to use</div></div>
+    </div>
+    <div style="margin-top:0.75rem;font-size:0.82rem;color:var(--gray-400);">90% will accept proxy demographics in some form. The demand for confidence intervals means uncertainty quantification is not optional -- it is a prerequisite for uptake.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">Finding 7 | Operational needs</div>
+    <div class="section-title">How would experts use these statistics?</div>
+    <div class="line"></div>
+    <div class="two-col">
+      <div>
+        <div class="col-head">Intended use</div>
+        <div class="bar-row" style="margin-bottom:6px;"><div class="bar-label sm" style="width:170px;font-size:0.78rem;">Design new programs</div><div class="bar-track" style="height:6px;"><div class="bar-fill" style="width:100%;background:var(--navy);height:6px;"></div></div><div class="bar-val" style="font-size:0.72rem;">79%</div></div>
+        <div class="bar-row" style="margin-bottom:6px;"><div class="bar-label sm" style="width:170px;font-size:0.78rem;">Advise on AI/digital policy</div><div class="bar-track" style="height:6px;"><div class="bar-fill" style="width:87%;background:var(--navy);height:6px;"></div></div><div class="bar-val" style="font-size:0.72rem;">69%</div></div>
+        <div class="bar-row" style="margin-bottom:6px;"><div class="bar-label sm" style="width:170px;font-size:0.78rem;">Country/sector diagnostic reports</div><div class="bar-track" style="height:6px;"><div class="bar-fill" style="width:84%;background:var(--purple);height:6px;"></div></div><div class="bar-val" style="font-size:0.72rem;">66%</div></div>
+        <div class="bar-row" style="margin-bottom:6px;"><div class="bar-label sm" style="width:170px;font-size:0.78rem;">Understand risks</div><div class="bar-track" style="height:6px;"><div class="bar-fill" style="width:75%;background:var(--purple);height:6px;"></div></div><div class="bar-val" style="font-size:0.72rem;">59%</div></div>
+        <div class="bar-row" style="margin-bottom:6px;"><div class="bar-label sm" style="width:170px;font-size:0.78rem;">Monitor/evaluate programs</div><div class="bar-track" style="height:6px;"><div class="bar-fill" style="width:70%;background:var(--teal);height:6px;"></div></div><div class="bar-val" style="font-size:0.72rem;">56%</div></div>
+        <div class="bar-row" style="margin-bottom:6px;"><div class="bar-label sm" style="width:170px;font-size:0.78rem;">Research and analysis</div><div class="bar-track" style="height:6px;"><div class="bar-fill" style="width:70%;background:var(--teal);height:6px;"></div></div><div class="bar-val" style="font-size:0.72rem;">56%</div></div>
+      </div>
+      <div>
+        <div class="col-head">Update frequency</div>
+        <div class="freq-grid">
+          <div class="freq-box"><div class="pct">54%</div><div class="lbl">Quarterly</div></div>
+          <div class="freq-box"><div class="pct">25%</div><div class="lbl">Annually</div></div>
+          <div class="freq-box"><div class="pct">18%</div><div class="lbl">Monthly</div></div>
+          <div class="freq-box"><div class="pct">3%</div><div class="lbl">One-time</div></div>
+        </div>
+        <div class="col-head" style="margin-top:1rem;margin-bottom:0.4rem;">Format preferences</div>
+        <div class="pill-row">
+          <div class="pill" style="background:rgba(0,30,96,0.08);color:var(--navy);">CSV/Excel 77%</div>
+          <div class="pill" style="background:rgba(86,195,196,0.12);color:var(--teal-dark);">Dashboard 67%</div>
+          <div class="pill" style="background:rgba(247,149,29,0.1);color:var(--orange-dark);">Briefs 41%</div>
+          <div class="pill">Report 31%</div>
+          <div class="pill">API 21%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">Finding 8 | Comparisons</div>
+    <div class="section-title">What comparisons are most valuable?</div>
+    <div class="line"></div>
+    <div class="bar-row"><div class="bar-label">Changes over time within a country</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#001E60;"></div></div><div class="bar-val">48</div></div>
+    <div class="bar-row"><div class="bar-label">Benchmarking against similar-income countries</div><div class="bar-track"><div class="bar-fill" style="width:94%;background:#001E60;"></div></div><div class="bar-val">45</div></div>
+    <div class="bar-row"><div class="bar-label">Cross-country comparisons within a region</div><div class="bar-track"><div class="bar-fill" style="width:92%;background:#2e2d70;"></div></div><div class="bar-val">44</div></div>
+    <div class="bar-row"><div class="bar-label">Before/after comparisons around policy events</div><div class="bar-track"><div class="bar-fill" style="width:85%;background:#2e2d70;"></div></div><div class="bar-val">41</div></div>
+    <div class="bar-row"><div class="bar-label">Comparisons across sectors</div><div class="bar-track"><div class="bar-fill" style="width:69%;background:#56C3C4;"></div></div><div class="bar-val">33</div></div>
+    <div class="bar-row"><div class="bar-label">Comparisons between languages within a country</div><div class="bar-track"><div class="bar-fill" style="width:31%;background:#d8dce5;"></div></div><div class="bar-val">15</div></div>
+    <div style="margin-top:0.75rem;font-size:0.82rem;color:var(--gray-400);">Before/after policy comparisons (cited by 41 respondents) signals that statistics need sufficient frequency and granularity to detect the effect of specific government interventions.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">Summary | Recommendations for lab partnerships</div>
+    <div class="section-title">Concrete asks to bring to frontier AI labs</div>
+    <div class="line"></div>
+    <div class="insight accent-left">
+      <span class="tag-pill tag-teal">Priority 1</span>
+      <h3>Sector and task-type classifications of queries</h3>
+      <p>Labs should produce query-level sector tags (health, education, agriculture, government, finance, labor) and task-type tags (drafting, Q&A, coding, summarization, translation). Even coarse taxonomies would be highly valuable -- these are the highest-ranked statistics by a clear margin.</p>
+    </div>
+    <div class="insight accent-left">
+      <span class="tag-pill tag-teal">Priority 2</span>
+      <h3>Government-specific query prevalence by country</h3>
+      <p>A dedicated statistic on the share of queries touching government services, regulations, and public administration -- disaggregated by country -- would directly serve the largest share of respondents. This is the single most-requested specific use case.</p>
+    </div>
+    <div class="insight accent-left">
+      <span class="tag-pill tag-teal">Priority 3</span>
+      <h3>Professional vs. personal use signal</h3>
+      <p>Labs should explore probabilistic categorization of queries by professional vs. personal context and automation vs. augmentation intent. Even a rough label would enable labor market and productivity analysis that respondents cannot currently do.</p>
+    </div>
+    <div class="insight">
+      <span class="tag-pill tag-orange">Priority 4</span>
+      <h3>Proxy-based gender and urban/rural breakdowns with uncertainty ranges</h3>
+      <p>90% of respondents will use proxy demographics if confidence intervals are provided. Labs should publish uncertainty estimates alongside proxy estimates -- not withhold data because it is imperfect.</p>
+    </div>
+    <div class="insight" style="border-color:var(--orange-dark);">
+      <span class="tag-pill tag-red">Prerequisite</span>
+      <h3>Methodology transparency package</h3>
+      <p>Before any statistics are used in government-facing work, respondents need: (1) which platforms are included and their market share, (2) confidence intervals on all estimates, (3) validation against external reference data, (4) a public data quality and limitations statement. Without this, uptake will be limited regardless of the statistics produced.</p>
+    </div>
+    <div class="insight">
+      <span class="tag-pill tag-blue">Scope signal</span>
+      <h3>Expand beyond US frontier labs</h3>
+      <p>Multiple respondents explicitly flagged that statistics limited to US commercial labs will be insufficient for global development work. Labs should either track or facilitate tracking of open-source model usage and non-US model adoption -- or acknowledge the gap explicitly in every publication.</p>
+    </div>
+  </div>
+
+</div>
