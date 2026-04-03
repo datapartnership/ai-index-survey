@@ -1,0 +1,353 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#001E60;--purple:#2e2d70;--orange:#F7951D;--orange-dark:#DF6B00;
+    --teal:#56C3C4;--teal-dark:#3DA3A8;
+    --gray-50:#f8f9fb;--gray-100:#eef0f4;--gray-200:#d8dce5;
+    --gray-400:#8e8e91;--gray-600:#495057;--gray-800:#1a1a2e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  .wrap{font-family:'Roboto',sans-serif;color:var(--gray-800);}
+  .hero{background:var(--navy);color:#fff;padding:2rem 2rem 1.5rem;}
+  .hero-label{font-family:'Asap Condensed',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem;}
+  .hero h1{font-family:'Asap Condensed',sans-serif;font-size:2rem;font-weight:700;line-height:1.15;margin-bottom:.75rem;}
+  .hero p{font-size:.9rem;color:rgba(255,255,255,.65);max-width:600px;line-height:1.6;}
+  .hero-meta{display:flex;gap:2rem;margin-top:1.25rem;flex-wrap:wrap;}
+  .hero-stat .num{font-family:'Asap Condensed',sans-serif;font-size:1.75rem;font-weight:700;color:var(--orange);}
+  .hero-stat .lbl{font-size:.75rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px;}
+  .body{padding:1.5rem 2rem;}
+  .section{margin-bottom:2rem;}
+  .section-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;}
+  .section-num{font-family:'Asap Condensed',sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:.2rem .6rem;border-radius:4px;}
+  .n1{background:rgba(86,195,196,.15);color:var(--teal-dark);}
+  .n2{background:rgba(247,149,29,.15);color:var(--orange-dark);}
+  .n3{background:rgba(46,45,112,.12);color:var(--purple);}
+  .n4{background:rgba(0,30,96,.1);color:var(--navy);}
+  .n5{background:rgba(86,195,196,.15);color:var(--teal-dark);}
+  .section-head h2{font-family:'Asap Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:var(--navy);}
+  .question-block{font-size:.9rem;color:var(--gray-600);line-height:1.6;margin-bottom:1rem;border-left:3px solid var(--teal);padding:.6rem .75rem;border-radius:0 4px 4px 0;background:rgba(86,195,196,.06);font-style:italic;}
+  .prose{font-size:.85rem;color:var(--gray-600);line-height:1.6;margin-bottom:1rem;}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;}
+  .stat-card{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:.85rem 1rem;}
+  .stat-card .sl{font-size:.75rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.8px;font-family:'Asap Condensed',sans-serif;margin-bottom:.3rem;}
+  .stat-card .sv{font-family:'Asap Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);line-height:1.3;}
+  .stat-card .sn{font-size:.75rem;color:var(--gray-400);margin-top:.2rem;}
+  .bar-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.45rem;}
+  .bar-label{font-size:.8rem;color:var(--gray-600);flex-shrink:0;line-height:1.3;}
+  .bar-track{flex:1;background:var(--gray-100);border-radius:3px;height:8px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:3px;}
+  .bar-count{font-size:.75rem;font-weight:500;color:var(--gray-400);min-width:24px;text-align:right;}
+  .divider{border:none;border-top:1px solid var(--gray-200);margin:1.5rem 0;}
+  .callout{background:rgba(0,30,96,.04);border:1px solid rgba(0,30,96,.12);border-radius:8px;padding:1rem 1.25rem;margin-top:1rem;}
+  .callout-head{font-family:'Asap Condensed',sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--navy);margin-bottom:.4rem;}
+  .callout p{font-size:.85rem;color:var(--gray-600);line-height:1.6;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem;}
+  .tag{font-size:.7rem;font-family:'Asap Condensed',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.5px;padding:.2rem .55rem;border-radius:4px;}
+  .tt{background:rgba(86,195,196,.15);color:var(--teal-dark);}
+  .to{background:rgba(247,149,29,.12);color:var(--orange-dark);}
+  .tp{background:rgba(46,45,112,.1);color:var(--purple);}
+  .tn{background:rgba(0,30,96,.08);color:var(--navy);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+  .region-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.5rem;}
+  .region-card{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:6px;padding:.6rem .85rem;display:flex;justify-content:space-between;align-items:center;}
+  .region-name{font-size:.82rem;color:var(--gray-600);}
+  .region-pill{font-family:'Asap Condensed',sans-serif;font-size:.82rem;font-weight:700;color:var(--navy);background:rgba(0,30,96,.08);padding:.15rem .45rem;border-radius:4px;}
+  .sector-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem;}
+  .sector-name{font-size:.82rem;color:var(--gray-600);width:180px;flex-shrink:0;}
+  .sector-bar-track{flex:1;background:var(--gray-100);border-radius:3px;height:10px;overflow:hidden;}
+  .sector-bar-fill{height:100%;border-radius:3px;}
+  .sector-count{font-size:.75rem;font-weight:500;color:var(--gray-400);min-width:24px;text-align:right;}
+  .use-case-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.45rem;}
+  .uc-label{font-size:.8rem;color:var(--gray-600);width:280px;flex-shrink:0;line-height:1.3;}
+  .uc-track{flex:1;background:var(--gray-100);border-radius:3px;height:8px;overflow:hidden;position:relative;}
+  .uc-fill{height:100%;border-radius:3px;}
+  .uc-pct{font-size:.75rem;font-weight:500;min-width:32px;text-align:right;}
+  .sector-top-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.75rem;}
+  .sector-top-card{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:.75rem 1rem;}
+  .sector-top-card .stc-sector{font-family:'Asap Condensed',sans-serif;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--gray-400);margin-bottom:.35rem;}
+  .sector-top-card .stc-stat{font-size:.82rem;color:var(--navy);font-weight:500;line-height:1.4;margin-bottom:.25rem;}
+  .sector-top-card .stc-note{font-size:.72rem;color:var(--gray-400);}
+  .footer-bar{background:var(--gray-50);border-top:1px solid var(--gray-200);padding:.75rem 2rem;display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--gray-400);}
+  .footer-bar strong{color:var(--navy);font-family:'Asap Condensed',sans-serif;font-size:.8rem;letter-spacing:.5px;}
+  @media(max-width:600px){.two-col{grid-template-columns:1fr;}.bar-label{width:180px;}.uc-label{width:180px;}.sector-name{width:140px;}}
+</style>
+
+<div class="wrap">
+<div class="hero">
+  <div class="hero-label">Survey findings</div>
+  <h1>What development practitioners want to know<br>about generative AI usage</h1>
+  <p>Analysis of an expert survey on priority statistics and use cases, conducted by the Development Data Partnership.</p>
+  <div class="hero-meta">
+    <div class="hero-stat"><span class="num">141</span><span class="lbl">Respondents</span></div>
+    <div class="hero-stat"><span class="num">7</span><span class="lbl">Sectors</span></div>
+    <div class="hero-stat"><span class="num">8</span><span class="lbl">Regions covered</span></div>
+  </div>
+</div>
+
+<div class="body">
+
+  <!-- REGIONAL COVERAGE -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num n5">Coverage</span>
+      <h2>Regional representation</h2>
+    </div>
+    <p class="prose">Respondents work across all major development regions, with the strongest representation from South Asia and Latin America & Caribbean. Many work globally or across multiple regions.</p>
+    <div class="region-grid">
+      <div class="region-card"><span class="region-name">South Asia</span><span class="region-pill">49</span></div>
+      <div class="region-card"><span class="region-name">Global</span><span class="region-pill">33</span></div>
+      <div class="region-card"><span class="region-name">Latin America &amp; Caribbean</span><span class="region-pill">25</span></div>
+      <div class="region-card"><span class="region-name">Europe &amp; Central Asia</span><span class="region-pill">23</span></div>
+      <div class="region-card"><span class="region-name">Sub-Saharan Africa</span><span class="region-pill">22</span></div>
+      <div class="region-card"><span class="region-name">East Asia &amp; Pacific</span><span class="region-pill">20</span></div>
+      <div class="region-card"><span class="region-name">Middle East &amp; North Africa</span><span class="region-pill">11</span></div>
+      <div class="region-card"><span class="region-name">North America</span><span class="region-pill">9</span></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTORAL COVERAGE -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num n2">Coverage</span>
+      <h2>Sectoral breakdown</h2>
+    </div>
+    <p class="prose">Digital Development and Macroeconomics together account for the majority of respondents. The "Other" category spans governance, statistics, gender, environment, and cross-sector roles.</p>
+    <div class="sector-row">
+      <div class="sector-name">Digital Development</div>
+      <div class="sector-bar-track"><div class="sector-bar-fill" style="width:100%;background:var(--navy);"></div></div>
+      <div class="sector-count">30</div>
+    </div>
+    <div class="sector-row">
+      <div class="sector-name">Macroeconomics / Fiscal</div>
+      <div class="sector-bar-track"><div class="sector-bar-fill" style="width:93%;background:var(--navy);"></div></div>
+      <div class="sector-count">28</div>
+    </div>
+    <div class="sector-row">
+      <div class="sector-name">Infrastructure</div>
+      <div class="sector-bar-track"><div class="sector-bar-fill" style="width:47%;background:var(--teal-dark);"></div></div>
+      <div class="sector-count">14</div>
+    </div>
+    <div class="sector-row">
+      <div class="sector-name">Labor Markets / SMEs</div>
+      <div class="sector-bar-track"><div class="sector-bar-fill" style="width:43%;background:var(--teal-dark);"></div></div>
+      <div class="sector-count">13</div>
+    </div>
+    <div class="sector-row">
+      <div class="sector-name">Health</div>
+      <div class="sector-bar-track"><div class="sector-bar-fill" style="width:20%;background:var(--orange);"></div></div>
+      <div class="sector-count">6</div>
+    </div>
+    <div class="sector-row">
+      <div class="sector-name">Education</div>
+      <div class="sector-bar-track"><div class="sector-bar-fill" style="width:17%;background:var(--orange);"></div></div>
+      <div class="sector-count">5</div>
+    </div>
+    <div class="sector-row">
+      <div class="sector-name">Agriculture</div>
+      <div class="sector-bar-track"><div class="sector-bar-fill" style="width:17%;background:var(--orange);"></div></div>
+      <div class="sector-count">5</div>
+    </div>
+    <div class="sector-row">
+      <div class="sector-name" style="color:var(--gray-400);">Other / cross-sector</div>
+      <div class="sector-bar-track"><div class="sector-bar-fill" style="width:100%;background:var(--gray-200);"></div></div>
+      <div class="sector-count" style="color:var(--gray-400);">40</div>
+    </div>
+
+    <div style="margin-top:1.5rem;margin-bottom:.5rem;font-size:.75rem;font-family:'Asap Condensed',sans-serif;text-transform:uppercase;letter-spacing:1px;color:var(--gray-400);">Top-ranked statistic by sector</div>
+    <div class="sector-top-grid">
+      <div class="sector-top-card">
+        <div class="stc-sector">Digital Development</div>
+        <div class="stc-stat">Share of queries by sector</div>
+        <div class="stc-note">Followed by govt service query prevalence</div>
+      </div>
+      <div class="sector-top-card">
+        <div class="stc-sector">Infrastructure</div>
+        <div class="stc-stat">Govt service / regulatory query prevalence</div>
+        <div class="stc-note">Tied with share of queries by sector</div>
+      </div>
+      <div class="sector-top-card">
+        <div class="stc-sector">Labor Markets / SMEs</div>
+        <div class="stc-stat">Share of queries by task type</div>
+        <div class="stc-note">Followed by professional vs. personal use split</div>
+      </div>
+      <div class="sector-top-card">
+        <div class="stc-sector">Health</div>
+        <div class="stc-stat">Prompt sophistication / complexity</div>
+        <div class="stc-note">Proxy for whether clinical queries are substantive</div>
+      </div>
+      <div class="sector-top-card">
+        <div class="stc-sector">Education</div>
+        <div class="stc-stat">Share of queries by sector</div>
+        <div class="stc-note">Followed by govt service prevalence</div>
+      </div>
+      <div class="sector-top-card">
+        <div class="stc-sector">Agriculture</div>
+        <div class="stc-stat">Linguistic diversity of users</div>
+        <div class="stc-note">Language access critical for smallholder reach</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- USE CASE RELEVANCE -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num n3">Use cases</span>
+      <h2>Which user groups matter most to practitioners</h2>
+    </div>
+    <p class="prose">Respondents rated 10 user groups by relevance to their work. Citizens navigating government services is the standout — rated critical or very relevant by nearly two-thirds of all respondents.</p>
+    <div style="margin-bottom:.5rem;font-size:.75rem;font-family:'Asap Condensed',sans-serif;text-transform:uppercase;letter-spacing:1px;color:var(--gray-400);">Share rating "critical" or "very relevant"</div>
+    <div class="use-case-row">
+      <div class="uc-label">Citizens navigating govt services / regulations</div>
+      <div class="uc-track"><div class="uc-fill" style="width:64%;background:var(--navy);"></div></div>
+      <div class="uc-pct" style="color:var(--navy);font-weight:700;">64%</div>
+    </div>
+    <div class="use-case-row">
+      <div class="uc-label">Employees in medium / large firms</div>
+      <div class="uc-track"><div class="uc-fill" style="width:59%;background:var(--navy);"></div></div>
+      <div class="uc-pct" style="color:var(--navy);">59%</div>
+    </div>
+    <div class="use-case-row">
+      <div class="uc-label">Small business owners</div>
+      <div class="uc-track"><div class="uc-fill" style="width:53%;background:var(--teal-dark);"></div></div>
+      <div class="uc-pct" style="color:var(--teal-dark);">53%</div>
+    </div>
+    <div class="use-case-row">
+      <div class="uc-label">Adults — self-directed learning</div>
+      <div class="uc-track"><div class="uc-fill" style="width:51%;background:var(--teal-dark);"></div></div>
+      <div class="uc-pct" style="color:var(--teal-dark);">51%</div>
+    </div>
+    <div class="use-case-row">
+      <div class="uc-label">Job seekers — skills training / CV / interview prep</div>
+      <div class="uc-track"><div class="uc-fill" style="width:47%;background:var(--teal-dark);"></div></div>
+      <div class="uc-pct" style="color:var(--teal-dark);">47%</div>
+    </div>
+    <div class="use-case-row">
+      <div class="uc-label">Farmers — crop management / pricing / weather</div>
+      <div class="uc-track"><div class="uc-fill" style="width:39%;background:var(--orange);"></div></div>
+      <div class="uc-pct" style="color:var(--orange-dark);">39%</div>
+    </div>
+    <div class="use-case-row">
+      <div class="uc-label">Teachers — lesson planning / materials</div>
+      <div class="uc-track"><div class="uc-fill" style="width:30%;background:var(--orange);"></div></div>
+      <div class="uc-pct" style="color:var(--orange-dark);">30%</div>
+    </div>
+    <div class="use-case-row">
+      <div class="uc-label">Health workers — clinical decision support</div>
+      <div class="uc-track"><div class="uc-fill" style="width:27%;background:var(--gray-200);"></div></div>
+      <div class="uc-pct" style="color:var(--gray-400);">27%</div>
+    </div>
+    <div class="use-case-row">
+      <div class="uc-label">Students — homework / exam prep / tutoring</div>
+      <div class="uc-track"><div class="uc-fill" style="width:26%;background:var(--gray-200);"></div></div>
+      <div class="uc-pct" style="color:var(--gray-400);">26%</div>
+    </div>
+    <div class="use-case-row">
+      <div class="uc-label">Patients / caregivers — health information</div>
+      <div class="uc-track"><div class="uc-fill" style="width:23%;background:var(--gray-200);"></div></div>
+      <div class="uc-pct" style="color:var(--gray-400);">23%</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- FOUR CORE QUESTIONS -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num n1">Question 1</span>
+      <h2>Is AI widening or narrowing inequality?</h2>
+    </div>
+    <div class="question-block">Who is actually using generative AI — and is it concentrating benefits among those already well-resourced, or reaching lower-income, rural, and marginalized populations?</div>
+    <p class="prose">The single most recurring concern across all sectors and regions.</p>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="sl">Priority statistic</div><div class="sv">Linguistic diversity of queries by country</div><div class="sn">Heavy skew toward English signals access gaps</div></div>
+      <div class="stat-card"><div class="sl">Priority statistic</div><div class="sv">Geographic distribution within countries</div><div class="sn">Urban/rural proxies flagged as essential</div></div>
+      <div class="stat-card"><div class="sl">Priority statistic</div><div class="sv">Prompt sophistication distribution</div><div class="sn">Proxy for whether AI reaches novice users</div></div>
+      <div class="stat-card"><div class="sl">Priority statistic</div><div class="sv">Repeat usage rates</div><div class="sn">Proxy for genuine usefulness vs. surface access</div></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num n2">Question 2</span>
+      <h2>How is AI actually being used?</h2>
+    </div>
+    <div class="question-block">Is AI being used for productive, high-value tasks — or trivial ones? Which sectors and task types dominate usage?</div>
+    <p class="prose">The most-chosen #1 priority. Practitioners need to know what people are doing with AI to design effective programs.</p>
+    <div style="margin-bottom:.5rem;font-size:.75rem;font-family:'Asap Condensed',sans-serif;text-transform:uppercase;letter-spacing:1px;color:var(--gray-400);">First-ranked statistic — respondents choosing as top priority</div>
+    <div class="bar-row"><div class="bar-label" style="width:280px;">Share of queries by sector</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--orange);"></div></div><div class="bar-count" style="color:var(--orange-dark);font-weight:700;">38</div></div>
+    <div class="bar-row"><div class="bar-label" style="width:280px;">Prevalence of govt service / regulatory queries</div><div class="bar-track"><div class="bar-fill" style="width:76%;background:var(--navy);"></div></div><div class="bar-count">29</div></div>
+    <div class="bar-row"><div class="bar-label" style="width:280px;">Cross-country comparisons of usage volume</div><div class="bar-track"><div class="bar-fill" style="width:55%;background:var(--teal-dark);"></div></div><div class="bar-count">21</div></div>
+    <div class="bar-row"><div class="bar-label" style="width:280px;">Share by task type (drafting, coding, Q&amp;A…)</div><div class="bar-track"><div class="bar-fill" style="width:29%;background:var(--purple);"></div></div><div class="bar-count">11</div></div>
+    <div class="bar-row"><div class="bar-label" style="width:280px;">Geographic distribution within countries</div><div class="bar-track"><div class="bar-fill" style="width:29%;background:var(--purple);"></div></div><div class="bar-count">11</div></div>
+    <div class="callout">
+      <div class="callout-head">Key derived statistic</div>
+      <p>Share of professional vs. personal use, and automation vs. augmentation — tells practitioners whether AI is replacing human judgment or supporting it, with direct implications for labor market and service quality analysis.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num n3">Question 3</span>
+      <h2>How is AI affecting labor markets and productivity?</h2>
+    </div>
+    <div class="question-block">Are productivity gains reaching workers in emerging markets? Is AI displacing jobs or complementing workers?</div>
+    <p class="prose">The second-largest bloc of questions, concentrated among macroeconomists and labor specialists.</p>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="sl">Priority statistic</div><div class="sv">Time-of-day / day-of-week query patterns</div><div class="sn">Work-hours clustering = professional use proxy</div></div>
+      <div class="stat-card"><div class="sl">Priority statistic</div><div class="sv">Repeat usage rates and intensity</div><div class="sn">Frequent return = workflow integration signal</div></div>
+      <div class="stat-card"><div class="sl">Priority statistic</div><div class="sv">Skill-building vs. task-substitution ratio</div><div class="sn">Learning queries vs. replacement queries</div></div>
+      <div class="stat-card"><div class="sl">Priority statistic</div><div class="sv">Cross-country usage benchmarks</div><div class="sn">Link to GDP, employment, productivity data</div></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num n4">Question 4</span>
+      <h2>How is AI used in government and public services?</h2>
+    </div>
+    <div class="question-block">Are citizens successfully navigating public services via AI? Is information quality consistent across countries?</div>
+    <p class="prose">Concentrated among governance and digital transformation practitioners. Second-most-chosen #1 priority overall.</p>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="sl">Priority statistic (#2 overall)</div><div class="sv">Prevalence of govt service / compliance queries</div><div class="sn">Directly measures AI as public information channel</div></div>
+      <div class="stat-card"><div class="sl">Priority statistic</div><div class="sv">Cross-country govt-query composition</div><div class="sn">Benchmarks digital governance quality</div></div>
+      <div class="stat-card"><div class="sl">Priority statistic</div><div class="sv">Query sophistication in govt topics</div><div class="sn">Basic vs. nuanced help — proxy for trust and capability</div></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <div class="section-head">
+      <span class="section-num" style="background:rgba(86,195,196,.15);color:var(--teal-dark);">Gap</span>
+      <h2>The missing piece: demographic disaggregation</h2>
+    </div>
+    <p class="prose">The largest gap identified by respondents across all sectors. Aggregate statistics are less actionable than disaggregated ones. Respondents said they'd accept rough proxy estimates if confidence intervals are disclosed.</p>
+    <div class="tag-row">
+      <span class="tag tt">Gender</span><span class="tag tt">Age group</span>
+      <span class="tag to">Income level proxy</span><span class="tag to">Urban / rural</span>
+      <span class="tag tp">Employment status</span><span class="tag tn">Education level</span>
+    </div>
+    <div class="callout" style="margin-top:1rem;border-color:rgba(86,195,196,.3);background:rgba(86,195,196,.05);">
+      <div class="callout-head" style="color:var(--teal-dark);">What respondents did not ask about</div>
+      <p>Accuracy or quality of AI outputs was raised mainly as a concern about data interpretability, not a measurement goal. Very little interest in which specific platforms users prefer. The focus is behavioral and distributional — not evaluative of AI systems.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-bar">
+  <strong>Development Data Partnership — GenAI Usage Survey</strong>
+  <span>n = 141 respondents · World Bank, OECD, and partner institutions</span>
+</div>
+</div>
